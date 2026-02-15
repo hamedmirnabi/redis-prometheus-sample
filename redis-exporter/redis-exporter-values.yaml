@@ -1,1 +1,16 @@
 # Custom values for redis-exporter
+redisAddress: redis://redis.database-monitoring.svc.cluster.local:6379
+
+auth:
+  # Use password authentication
+  enabled: true
+  # Use existing secret (ignores redisPassword)
+  secret:
+    name: redis-secret
+    key: REDIS_PASSWORD
+
+serviceMonitor:
+  # When set true then use a ServiceMonitor to configure scraping
+  enabled: true
+  labels:
+    release: prometheus
